@@ -1,4 +1,4 @@
-# RCVDB: Dictionary only needs to keep track of the unique values of a single attribute
+# MP-Former: Dictionary only needs to keep track of the unique values of a single attribute
 from collections import defaultdict
 
 import numpy as np

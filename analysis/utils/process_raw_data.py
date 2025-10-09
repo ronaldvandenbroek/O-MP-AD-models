@@ -39,7 +39,7 @@ def calculate_scores(y_trues, pred_probs, perspective, window_buckets=59):
     pred_prob = pred_probs[perspective][:]
 
     # print("Calculating scores for perspective", perspective, y_true.shape, pred_prob.shape)
-    # RCVDB TODO: If synthetic then a window bucket amount of 59 is used as it cleanly divides the 56227 traces
+    # MP-Former: TODO: If synthetic then a window bucket amount of 59 is used as it cleanly divides the 56227 traces
     # window_size = len(y_true) // window_buckets
     # window_size = len(y_true) // window_buckets
     #overlap = int(window_size * 0.1)

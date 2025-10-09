@@ -1,4 +1,4 @@
-﻿name: rcvdb-thesis-bpad
+﻿name: mp-former-paper-bpad
 channels:
   - pyg
   - defaults
@@ -20,7 +20,7 @@ dependencies:
           - transformers==4.46.2
           - scipy==1.10.1
 
-# RCVDB: TODO Try to get Tensorflow on the GPU working
+# MP-Former: TODO Try to get Tensorflow on the GPU working
 # Follow instructions: https://www.tensorflow.org/install/pip#windows-wsl2
 # https://www.tensorflow.org/install/source#gpu 
 # tensorflow 2.10.0 needs:
@@ -28,6 +28,6 @@ dependencies:
 # CUDA 11.2 
 
 # Setup environment:
-# conda env remove --name "rcvdb-thesis-bpad"
+# conda env remove --name "mp-former-paper-bpad"
 # conda env create -f environment.yml
-# conda activate rcvdb-thesis-bpad
+# conda activate mp-former-paper-bpad

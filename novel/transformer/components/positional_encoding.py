@@ -42,7 +42,7 @@ class PositionMultiTaskEmbeddingLayer(Layer):
         pos_encoding = tf.tile(self.position_embedding_matrix, [batch_size, 1, 1])
 
         numerical_pos_encoding = numerical_values + pos_encoding
-        # RCVDB: TODO additionally encode categorical based on vocab sizes
+        # MP-Former: TODO additionally encode categorical based on vocab sizes
         # categorical_word_encoding = categorical_values + 
         categorical_pos_encoding = categorical_values + pos_encoding
 
@@ -89,8 +89,8 @@ class PositionMultiTaskEmbeddingLayer(Layer):
 class PositionWordEmbeddingLayer(Layer):
     def __init__(self, sequence_length, vocab_size, output_dim, **kwargs):
         super(PositionWordEmbeddingLayer, self).__init__(**kwargs)
-        # RCVDB: TODO Can use w2v here
-        # RCVDB: TODO Probably need to implement the Attribute Dictionary here to make it as dynamic as possible
+        # MP-Former: TODO Can use w2v here
+        # MP-Former: TODO Probably need to implement the Attribute Dictionary here to make it as dynamic as possible
         self.word_embedding_layer = Embedding(
             input_dim=vocab_size, output_dim=output_dim
         )

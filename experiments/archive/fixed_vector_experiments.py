@@ -30,7 +30,7 @@ def Fixed_Vector_finetuned():
     run_name = 'Fixed_vector_finetuned'
     vector_sizes = [20]
     pre_train_percentage = [0]
-    batch_sizes = [8] #RCVDB: TODO finetune batch size and buckets
+    batch_sizes = [8] #MP-Former: TODO finetune batch size and buckets
     buckets = [[3,4,5,6,7,8,9]]
 
     ads = []

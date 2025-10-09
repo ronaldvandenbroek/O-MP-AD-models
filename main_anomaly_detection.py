@@ -93,7 +93,7 @@ def fit_and_eva(dataset_name, dataset_folder, run_name, seed, ad, fit_kwargs=Non
     # config['processed_events'] = list(processed_events)
     
 
-    # RCVDB: Loop through each bucket size and handle each size seperately
+    # MP-Former: Loop through each bucket size and handle each size seperately
     bucket_boundaries = fit_kwargs.get('bucket_boundaries', None)
     for i in range(len(bucket_losses)):
         if bucket_boundaries is not None:
@@ -122,7 +122,7 @@ def fit_and_eva(dataset_name, dataset_folder, run_name, seed, ad, fit_kwargs=Non
         fs_save.save_raw_losses(
             losses=losses)
 
-        # RCVDB: Loop through each perspective and handle each result level seperately
+        # MP-Former: Loop through each perspective and handle each result level seperately
         if isinstance(trace_level_abnormal_scores, dict):
             for anomaly_perspective in trace_level_abnormal_scores.keys():
                 fs_save.set_perspective(anomaly_perspective)

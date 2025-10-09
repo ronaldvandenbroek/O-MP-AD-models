@@ -13,7 +13,7 @@ from novel.dae.dae import DAE
 
 
 def All_original_models_finetuned():
-    # RCVDB: Full Configuration
+    # MP-Former: Full Configuration
     run_name = 'Original_Finetuned'
     ads = [
         dict(ad=LikelihoodPlusAnomalyDetector),  ## Multi-perspective, attr-level    --- Multi-perspective anomaly detection in business process execution events (extended to support the use of external threshold)

@@ -19,7 +19,7 @@ module load GCC/12.2.0
 
 source /sw/rl8/zen/app/Miniconda3/24.1.2-0/etc/profile.d/conda.sh
 
-conda activate rcvdb-thesis-bpad
+conda activate mp-former-paper-bpad
 
 cd $HOME/Thesis/BPAD/
 

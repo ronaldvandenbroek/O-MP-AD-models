@@ -159,7 +159,7 @@ def DAE_finetuned_embedding():
 
 
 def DAE_gridsearch_batch_bucketing():
-    # RCVDB: Configuration to test multi-label anomalies
+    # MP-Former: Configuration to test multi-label anomalies
     # In practice probably more accurrate to have one epoch and a batch size of one to simulate each event arriving seperately
     run_name = 'DAE_Gridsearch'
     ads = [

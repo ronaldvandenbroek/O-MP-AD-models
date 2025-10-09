@@ -76,7 +76,7 @@ def W2V_finetuned():
     vector_sizes = [20]
     window_sizes = [2]
     pre_train_percentage = [0]
-    batch_sizes = [8] #RCVDB: TODO finetune batch size and buckets
+    batch_sizes = [8] #MP-Former: TODO finetune batch size and buckets
     buckets = [[3,4,5,6,7,8,9]]
 
     ads = []
@@ -111,7 +111,7 @@ def W2V_pretrain():
     vector_sizes = [20]
     window_sizes = [2]
     pre_train_percentages = [0,0.01,0.05,0.1,0.5]
-    batch_sizes = [8] #RCVDB: TODO finetune batch size and buckets
+    batch_sizes = [8] #MP-Former: TODO finetune batch size and buckets
     buckets = [[3,4,5,6,7,8,9]]
     repeats = 5
     
@@ -135,7 +135,7 @@ def W2V_no_averaging():
     vector_sizes = [20]
     window_sizes = [2]
     pre_train_percentage = [0]
-    batch_sizes = [8] #RCVDB: TODO finetune batch size and buckets
+    batch_sizes = [8] #MP-Former: TODO finetune batch size and buckets
     buckets = [[3,4,5,6,7,8,9]]
 
     ads = []

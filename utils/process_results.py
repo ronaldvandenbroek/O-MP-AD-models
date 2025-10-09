@@ -22,11 +22,11 @@ def process_bucket_results(
     # errors_raw = targets - predictions
     errors_unmasked = np.power(errors_raw, error_power)
 
-    # RCVDB: If trace2vec than the first vector_size of outputs can be discarded as it is not relevant for specific perspectives
+    # MP-Former: If trace2vec than the first vector_size of outputs can be discarded as it is not relevant for specific perspectives
     if categorical_encoding in (EncodingCategorical.TRACE_2_VEC_ATC, EncodingCategorical.TRACE_2_VEC_C):
         errors_unmasked = errors_unmasked[:, vector_size:]
 
-    # RCVDB: Generate the mask per bucket
+    # MP-Former: Generate the mask per bucket
     if categorical_encoding in (EncodingCategorical.WORD_2_VEC_ATC, EncodingCategorical.TRACE_2_VEC_ATC):
         attribute_type_counter = Counter(attribute_types)
 
@@ -75,9 +75,9 @@ def process_bucket_results(
     # np.mean for the proportion of the one-hot encoded predictions being wrong
     # np.sum for the total one-hot predictions being wrong
     # (attributes * events, cases)
-    # RCVDB: TODO Sum the errors to amplify the difference between normal and anomalous data
+    # MP-Former: TODO Sum the errors to amplify the difference between normal and anomalous data
     # Does have the problem that longer traces will always have higher sums
-    # RCVDB: TODO Could also take the max value to amplify the difference between normal and anomalous data
+    # MP-Former: TODO Could also take the max value to amplify the difference between normal and anomalous data
     errors_attr_split_summed = [np.mean(attribute, axis=1) for attribute in errors_attr_split]
 
     # Split the attributes based on which event it belongs to
@@ -129,7 +129,7 @@ def process_bucket_results(
             stop=len(errors_attr_split_summed), 
             step=case_length)
         
-        # TODO RCVDB: Check if this is actually correct for the DAE model as it does not work for the Tokenizer Transformer
+        # TODO MP-Former: Check if this is actually correct for the DAE model as it does not work for the Tokenizer Transformer
         errors_event_split = np.split(errors_attr_split_summed, split_event, axis=0)
 
     # Split the attributes based on which perspective they belong to

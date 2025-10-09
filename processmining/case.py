@@ -28,7 +28,7 @@ class Case(object):
             self.events = events
         self.attributes = dict(kwargs)
         
-        # RCVDB: Determine if the trace is complete or a prefix of a complete trace
+        # MP-Former: Determine if the trace is complete or a prefix of a complete trace
         self.complete_trace = True
 
     def __eq__(self, other):
@@ -86,7 +86,7 @@ class Case(object):
                 attribute_values.append(event.name)
         return attribute_values
 
-    # RCVDB: For sorting the prefixes on the last event arrival, which is the timestamp of the last event in events
+    # MP-Former: For sorting the prefixes on the last event arrival, which is the timestamp of the last event in events
     @property
     def last_event_arrival(self):
         return self.events[-1].timestamp

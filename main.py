@@ -8,7 +8,7 @@ from experiments.report_experiments import Experiment_Anomaly_Percentage, Experi
 from experiments.transformer_experiments import Experiment_Synthetic_Transformer, Experiment_Transformer_Debug, Experiment_Transformer_Event_Multi_Task, Experiment_Transformer_Event_Positional_Encoding, Experiment_Transformer_Perspective_Weights_Arrival_Time, Experiment_Transformer_Perspective_Weights_Attribute, Experiment_Transformer_Perspective_Weights_Order, Experiment_Transformer_Perspective_Weights_Workload, Experiment_Transformer_Prefix_Store
 from main_anomaly_detection import execute_runs, prepare_datasets
 
-# RCVDB: Supressing Sklearn LabelEncoder InconsistentVersionWarning as this seems an internal package issue
+# MP-Former: Supressing Sklearn LabelEncoder InconsistentVersionWarning as this seems an internal package issue
 from sklearn.exceptions import InconsistentVersionWarning
 
 from utils.fs import FSSave, get_random_id

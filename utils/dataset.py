@@ -64,7 +64,7 @@ class Dataset(object):
         self.categorical_encoding = categorical_encoding
         self.numerical_encoding = numerical_encoding
 
-        # RCVDB: Renaming classes/labels to labels per abstraction level
+        # MP-Former: Renaming classes/labels to labels per abstraction level
         self.attr_labels = None
         self.event_labels = None
         self.case_labels = None
@@ -213,7 +213,7 @@ class Dataset(object):
         """Return the length of the case with the most events."""
         return self.features[0].shape[1]
     
-    # RCVDB: This version of the function aims for the models to predict the anomaly perspective themselves, 
+    # MP-Former: This version of the function aims for the models to predict the anomaly perspective themselves, 
     # however this can also be achieved by generating an error score for each attribute 
     # and depending on where the error is the anomaly perspectives can be determined
     @staticmethod
@@ -224,7 +224,7 @@ class Dataset(object):
         :param event_log:
         :return:
         """
-        # RCVDB: Create a target matix for multi-perspective anomaly detection
+        # MP-Former: Create a target matix for multi-perspective anomaly detection
         # +1 for end event and +1 for start event
         num_events = event_log.max_case_len + 2
         num_attributes = event_log.num_event_attributes
@@ -300,7 +300,7 @@ class Dataset(object):
 
         # Save all values in a flat 1d array. This is necessary for the preprocessing. We will reshape later.
         for i, case in enumerate(event_log.cases):
-            # RCVDB: Do not add the end event if the trace is not 'complete' or in other words is a prefix
+            # MP-Former: Do not add the end event if the trace is not 'complete' or in other words is a prefix
             case:Case
 
             if case.complete_trace: # or not case.complete_trace:
@@ -387,7 +387,7 @@ class Dataset(object):
                 x = feature_columns[key]
                 features[k][i, :case_len] = x[offset:offset + case_len]
 
-        # RCVDB: Debug prints to showcase the encoded labels
+        # MP-Former: Debug prints to showcase the encoded labels
         print(f'Feature Columns: {feature_columns.keys()}')
         print(f'Feature Shape: {features[0].shape}')
         # print(f'Example feature over multiple cases:')
@@ -499,7 +499,7 @@ class Dataset(object):
         return categorical
     
     def _min_max_scaling(self, feature_column):
-        # RCVDB: Implementing min-max scaling to avoid relying on a normality assumption as experiments have shown that a normal distribution cannot be assumed in most features
+        # MP-Former: Implementing min-max scaling to avoid relying on a normality assumption as experiments have shown that a normal distribution cannot be assumed in most features
         # feature_columns[key] = (f - f.mean()) / f.std()  # 0 mean and 1 std normalization
         f_min = np.min(feature_column)
         f_max = np.max(feature_column)
@@ -568,7 +568,7 @@ class Dataset(object):
     @property
     def binary_targets(self):
         """Return targets for anomaly detection; 0 = normal, 1 = anomaly."""
-        # RCVDB: With multi-class prediction, the targets are already binary
+        # MP-Former: With multi-class prediction, the targets are already binary
         print(f'Binary target shape: {self.classes.shape}')
         return self.classes
 
@@ -674,7 +674,7 @@ class Dataset(object):
         # one_hot_features = [self._to_categorical(f)[:, :, 1:] if t == AttributeType.CATEGORICAL else np.expand_dims(f, axis=2)
         #         for f, t in zip(self._features, self.attribute_types)]
 
-        # RCVDB: With the real world dataset the above operation causes memory errors
+        # MP-Former: With the real world dataset the above operation causes memory errors
         # Setting dtype for numerical stability and memory efficiency
         dtype = np.float32
 
@@ -688,10 +688,10 @@ class Dataset(object):
         # If a list is required, wrap the generator expression in list()
         one_hot_features = list(one_hot_features)
         
-        # RCVDB: Tensor seems to be of shape (attribute_dimension, number_of_cases, max_case_length)
+        # MP-Former: Tensor seems to be of shape (attribute_dimension, number_of_cases, max_case_length)
         print('One-hot features shape: ', len(one_hot_features), len(one_hot_features[0]), len(one_hot_features[0][0]))
 
-        # RCVDB: Debug to get an overview of how the features are encoded
+        # MP-Former: Debug to get an overview of how the features are encoded
         # for i in range(len(one_hot_features)):
         #     print(one_hot_features[i][0][0])
 
@@ -708,7 +708,7 @@ class Dataset(object):
         :return:
         """
         # flat_one_hot_features = np.concatenate(self.onehot_features, axis=2)
-        # RCVDB: With the real world dataset the above operation causes memory errors
+        # MP-Former: With the real world dataset the above operation causes memory errors
         # Setting dtype for numerical stability and memory efficiency
 
         flat_one_hot_features = np.concatenate([feature for feature in self.onehot_features], axis=2)

@@ -19,7 +19,7 @@ class DotProductAttention(Layer):
  
         # Apply mask to the attention scores
         # (If 1 in mask value should be ignored thus is set to a very large negative number)
-        # RCVDB: TODO Can probably enforce process structures here
+        # MP-Former: TODO Can probably enforce process structures here
         if mask is not None:
             scores += -1e9 * mask
  

@@ -87,9 +87,9 @@ class Class(object):
     def items():
         return dict(zip(Class.keys(), Class.values()))
 
-# RCVDB: Enum representing the possible anomaly perspectives
+# MP-Former: Enum representing the possible anomaly perspectives
 class Perspective(object):
-    # RCVDB: Removing normal as that isn't a perspective that needs to be predicted,
+    # MP-Former: Removing normal as that isn't a perspective that needs to be predicted,
     # All values being none indicateds a normal trace.
     # NORMAL = 0
     ORDER = 0

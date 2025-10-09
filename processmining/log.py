@@ -63,7 +63,7 @@ class EventLog(object):
         # print(f'Attributes: {self.attributes.keys()}')
         if 'global_attributes' in self.attributes.keys() and 'event' in self.attributes['global_attributes'].keys():
             # print(f"Global Attributes: {self.attributes['global_attributes'].keys()}")
-            # RCVDB: Ignore event level label
+            # MP-Former: Ignore event level label
             ignored = ['concept:name', 'time:timestamp', 'lifecycle:transition', 'EventID', 'activityNameEN',
                        'activityNameNL', 'dateFinished', 'question', 'product', 'EventOrigin', 'Action',
                        'organization involved', 'impact','concept:instance', '_label']
@@ -76,7 +76,7 @@ class EventLog(object):
                        'monitoringResource','planned','question',
                        'concept:name', 'time:timestamp']
 
-            # RCVDB: Ignore event level label
+            # MP-Former: Ignore event level label
             attributes += sorted(
                 [key for key in list(self.cases[0].events[0].attributes.keys()) if not(key.startswith('_')) and key not in ignored])
         return attributes
@@ -84,14 +84,14 @@ class EventLog(object):
     def get_activity_name(self):
         return self.get_attribute_index('name')
     
-    # RCVDB: Determine the index of a certain attribute
+    # MP-Former: Determine the index of a certain attribute
     def get_attribute_index(self, atrribute_name):
         attributes = self.event_attribute_keys
         if atrribute_name in attributes:
             return attributes.index(atrribute_name)
         return None   
     
-    # RCVDB: Determine the perspectives a certain attribute belongs to
+    # MP-Former: Determine the perspectives a certain attribute belongs to
     @property
     def event_attribute_perspectives(self):
         perspectives = []
@@ -241,7 +241,7 @@ class EventLog(object):
                 event = Event(name=e['name'], timestamp=e['timestamp'], **e['attributes'])
                 _case.add_event(event)
 
-                # RCVDB: If the event_log is prefix based add a clone of each case to the log after every added event
+                # MP-Former: If the event_log is prefix based add a clone of each case to the log after every added event
                 # This simulates that each 'new' event loads the corresponding prefix of the case.
                 if prefix:
                     cloned_case = Case.clone(_case)
@@ -253,13 +253,13 @@ class EventLog(object):
 
                     event_log.add_case(cloned_case)
 
-            # RCVDB: If the event_log is not prefix based add only the complete traces to the log
+            # MP-Former: If the event_log is not prefix based add only the complete traces to the log
             # If it is prefix based then add a final 'complete' case to the trace
             # if not prefix:
             _case.complete_trace = True
             event_log.add_case(_case)
 
-        # RCVDB: Sort the event_log so the prefixes are ordered by the order the last event arrived
+        # MP-Former: Sort the event_log so the prefixes are ordered by the order the last event arrived
         if prefix:
             event_log.cases = sorted(event_log.cases, key=Case.get_last_event_time, reverse=False)    
 
@@ -267,7 +267,7 @@ class EventLog(object):
     
     @staticmethod
     def from_dict(log):
-        # RCVDB: Need to implement prefix-based loading to support loading from dict.
+        # MP-Former: Need to implement prefix-based loading to support loading from dict.
         raise NotImplementedError("Loading from dict is currently not supported.")
     
         event_log = EventLog(**log['attributes'])
@@ -287,7 +287,7 @@ class EventLog(object):
         :param file_path: path to xes file
         :return: EventLog object
         """
-        # RCVDB: Need to implement prefix-based loading to support loading from xes.
+        # MP-Former: Need to implement prefix-based loading to support loading from xes.
         raise NotImplementedError("Loading from XES is currently not supported.")
 
         # parse the log with lxml
@@ -391,7 +391,7 @@ class EventLog(object):
         :param file_path: path to CSV file
         :return: EventLog object
         """
-        # RCVDB: Need to implement prefix-based loading to support loading from csv.
+        # MP-Former: Need to implement prefix-based loading to support loading from csv.
         raise NotImplementedError("Loading from CSV is currently not supported.")
 
         # parse file as pandas dataframe
@@ -417,7 +417,7 @@ class EventLog(object):
 
     @staticmethod
     def from_sql(server, database, resource, password, schema='pm'):
-        # RCVDB: Need to implement prefix-based loading to support loading from sql.
+        # MP-Former: Need to implement prefix-based loading to support loading from sql.
         raise NotImplementedError("Loading from SQL is currently not supported.")
     
         import pyodbc

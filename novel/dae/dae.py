@@ -247,7 +247,7 @@ class DAE(NNAnomalyDetector):
                 # Based on what type of attribute it is determine which loss function to use
                 if attribute_type == AttributeType.CATEGORICAL:
                     # If categorical preform a softmax
-                    # RCVDB: TODO: Softmaxing does require the model to be able to predict if something is normal aka no anomalies
+                    # MP-Former: TODO: Softmaxing does require the model to be able to predict if something is normal aka no anomalies
                     # Otherwise it will just artificially raise the y_pred while it should correctly predict all 0s
 
                     # y_pred_split = tf.nn.softmax(y_pred_split)
@@ -319,7 +319,7 @@ class DAE(NNAnomalyDetector):
             case_lengths = case_lengths_buckets[i]
 
             if bucket_boundaries is not None:
-                # RCVDB: TODO Experimental removing start and end event in the encoding
+                # MP-Former: TODO Experimental removing start and end event in the encoding
                 #case_max_length = bucket_boundaries[i] - 2
                 case_max_length = bucket_boundaries[i]
             else:
@@ -336,16 +336,16 @@ class DAE(NNAnomalyDetector):
             for i, (x_batch, y_batch) in pbar:
                 runtime_tracker.start_iteration()
 
-                # RCVDB: Sanity check to see if the batches are valid:
+                # MP-Former: Sanity check to see if the batches are valid:
                 if len(x_batch) == 0 or len(y_batch) == 0:
                     print("Empty batch encountered!")
                 if np.any(np.isnan(x_batch)) or np.any(np.isnan(y_batch)):
                     print("Batch contains NaNs!")
 
-                # RCVDB: Train the model on the current batch and return the prediction
-                # RCVDB: TODO: Tensorflow seems to throw optimisation warnings, suggesting that the code can be optimized. 
+                # MP-Former: Train the model on the current batch and return the prediction
+                # MP-Former: TODO: Tensorflow seems to throw optimisation warnings, suggesting that the code can be optimized. 
 
-                # RCVDB: Goal is reconstruction, thus x and y are the same
+                # MP-Former: Goal is reconstruction, thus x and y are the same
                 runtime_tracker_train.start_iteration()
                 loss = model.train_on_batch(x_batch, y_batch)
                 runtime_tracker_train.end_iteration()
@@ -362,7 +362,7 @@ class DAE(NNAnomalyDetector):
 
                 runtime_tracker.end_iteration()
 
-                # RCVDB: Sanity check to see if the loss includes NanN
+                # MP-Former: Sanity check to see if the loss includes NanN
                 if tf.reduce_any(tf.math.is_nan(loss)):
                     print("NaN detected in loss!")
                     raise ValueError("NaN detected in loss, stopping training!")

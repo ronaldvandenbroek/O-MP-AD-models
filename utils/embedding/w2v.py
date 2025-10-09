@@ -101,7 +101,7 @@ class ProcessWord2VecEncoder():
         numeric_features = []
         numeric_feature_names = []
         for index, (feature, attribute_type, attribute_key) in tqdm(enumerate(zip(self.features, self.attribute_types, self.event_attribute_keys)), "Encoding W2V Features"):
-            # RCVDB: TODO Experimental, not encoding start and end event
+            # MP-Former: TODO Experimental, not encoding start and end event
             # feature_experimental = []
             # for case in feature:
             #     feature_experimental.append(case[1:-1])
@@ -200,7 +200,7 @@ class ProcessWord2VecEncoder():
     def encode_flat_features_2d_average(self, trace2vec=False):
         w2v_features, numeric_features, numeric_feature_names, w2v_feature_names = self.encode_features()
 
-        # RCVDB: Interleaf the w2v features
+        # MP-Former: Interleaf the w2v features
         # (num_attribute, num_cases, vector_size) 
         # (num_cases, num_attribute, vector_size) 
         # (num_cases, num_attribute * vector_size) 
@@ -209,7 +209,7 @@ class ProcessWord2VecEncoder():
         # Need order C so the whole w2v of each attribute is next to each other
         flat_w2v_features = np.reshape(transposed_w2v_features, (dim0, dim1 * dim2), order='C')
 
-        # RCVDB: Interleaf the numeric features
+        # MP-Former: Interleaf the numeric features
         # (num_attribute, num_cases, num_events) 
         # (num_cases, num_attribute, num_events) 
         # (num_cases, num_attribute * num_events)
@@ -230,7 +230,7 @@ class ProcessWord2VecEncoder():
             # (num_cases, trace_encoding + num_attribute * num_events)
             flat_w2v_numeric_features = np.concatenate((trace_encoding,flat_w2v_numeric_features), axis=1)      
 
-        # RCVDB: Sanity check to see if all values are encoded correctly.
+        # MP-Former: Sanity check to see if all values are encoded correctly.
         assert not np.any(np.isnan(flat_w2v_numeric_features)), "Data contains NaNs!"
         assert not np.any(np.isinf(flat_w2v_numeric_features)), "Data contains Infs!"
 

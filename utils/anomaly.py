@@ -24,7 +24,7 @@ from processmining.event import Event
 from processmining.log import EventLog
 from utils.enums import Class, Perspective
 
- # RCVDB: TODO Rework all the prettify label functions
+ # MP-Former: TODO Rework all the prettify label functions
 class Anomaly(object):
     """Base class for anomaly implementations."""
 
@@ -97,7 +97,7 @@ class SkipSequenceAnomaly(Anomaly):
 
     @staticmethod
     def targets(event_log:EventLog, targets, event_index, label):
-        # RCVDB: Length of the skip can be ignored as that will not be present in the existing data
+        # MP-Former: Length of the skip can be ignored as that will not be present in the existing data
         attribute_index = event_log.get_activity_name()
         targets[event_index, attribute_index, Perspective.ORDER] = True
 
@@ -119,7 +119,7 @@ class LateAnomaly(Anomaly):
 
     @staticmethod
     def targets(event_log:EventLog, targets, event_index, label):
-        # RCVDB: Only the events that are shifted are marked as anomalous, each event will have the anomaly marked seperately
+        # MP-Former: Only the events that are shifted are marked as anomalous, each event will have the anomaly marked seperately
         attribute_index = event_log.get_activity_name()
         targets[event_index, attribute_index, Perspective.ORDER] = True
 
@@ -142,7 +142,7 @@ class EarlyAnomaly(Anomaly):
 
     @staticmethod
     def targets(event_log:EventLog, targets, event_index, label):
-        # RCVDB: Only the events that are shifted are marked as anomalous, each event will have the anomaly marked seperately
+        # MP-Former: Only the events that are shifted are marked as anomalous, each event will have the anomaly marked seperately
         attribute_index = event_log.get_activity_name()
         targets[event_index, attribute_index, Perspective.ORDER] = True
 
@@ -196,7 +196,7 @@ class InsertAnomaly(Anomaly):
     def targets(event_log:EventLog, targets, event_index, label):
         attribute_index = event_log.get_activity_name()
         targets[event_index, attribute_index, Perspective.ORDER] = True #Class.INSERT
-        # RCVDB: Insert should not as the attributes in the inserted event are not themselves anomalous by default
+        # MP-Former: Insert should not as the attributes in the inserted event are not themselves anomalous by default
         # targets[event_index, 1:, Perspective.ATTRIBUTE] = 1 #Class.ATTRIBUTE     
            
         return targets, Perspective.ORDER
@@ -207,7 +207,7 @@ class InsertAnomaly(Anomaly):
         indices = label['attr']['indices']
         return f'{name} at {", ".join([str(i + 1) for i in indices])}'
 
-# RCVDB: Implementing arrival-time anomaly
+# MP-Former: Implementing arrival-time anomaly
 class ArrivalTimeAnomaly(Anomaly):
     def __init__(self):
         super(ArrivalTimeAnomaly, self).__init__()
@@ -225,7 +225,7 @@ class ArrivalTimeAnomaly(Anomaly):
         inserted = label['attr']['inserted']
         return f'{name} {", ".join([e["name"] for e in inserted])} at {start}'
 
-# RCVDB: Implementing global workload anomaly
+# MP-Former: Implementing global workload anomaly
 class GlobalWorkloadAnomaly(Anomaly):
     def __init__(self):
         super(GlobalWorkloadAnomaly, self).__init__()
@@ -254,7 +254,7 @@ class GlobalWorkloadAnomaly(Anomaly):
         inserted = label['attr']['inserted']
         return f'{name} {", ".join([e["name"] for e in inserted])} at {start}'
     
-# RCVDB: Implementing local workload anomaly
+# MP-Former: Implementing local workload anomaly
 class LocalWorkloadAnomaly(Anomaly):
     def __init__(self):
         super(LocalWorkloadAnomaly, self).__init__()
@@ -278,7 +278,7 @@ class LocalWorkloadAnomaly(Anomaly):
     
 ANOMALIES = dict((s[:-7], anomaly) for s, anomaly in inspect.getmembers(sys.modules[__name__], inspect.isclass))
 
-# RCVDB: Reworked label_to_targets to enable multi-label anomaly detection
+# MP-Former: Reworked label_to_targets to enable multi-label anomaly detection
 def label_to_targets(event_log, targets, event_index, label):
     # If label is normal, then can skip
     if label == 'normal':
@@ -287,7 +287,7 @@ def label_to_targets(event_log, targets, event_index, label):
         anomaly:Anomaly = ANOMALIES.get(label['anomaly'])
         return anomaly.targets(event_log, targets, event_index, label)
 
-# RCVDB: TODO prettify label
+# MP-Former: TODO prettify label
 def prettify_label(label):
     if label == 'normal':
         return 'Normal'

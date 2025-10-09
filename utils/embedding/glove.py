@@ -10,7 +10,7 @@ import torch
 from torch import nn
 from tqdm import tqdm
 
-# RCVDB: TODO Worth the effort?
+# MP-Former: TODO Worth the effort?
 # https://towardsdatascience.com/a-comprehensive-python-implementation-of-glove-c94257c2813d
 
 class GloVe(nn.Module):

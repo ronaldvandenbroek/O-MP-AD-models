@@ -36,13 +36,13 @@ This repository is an extention of the [BPAD](https://github.com/guanwei49/BPAD)
    
 ## Setup
 ### Environment
-To install the required packages the `conda` environment `rcvdb-thesis-bpad` should be installed. `conda` can be utilized by installing [Miniconda](https://conda.io/miniconda.html).
+To install the required packages the `conda` environment `mp-former-paper-bpad` should be installed. `conda` can be utilized by installing [Miniconda](https://conda.io/miniconda.html).
 
 The environments can be installed by running the following commands:
 
 ```
-conda env remove --name "rcvdb-thesis-bpad"
-conda activate rcvdb-thesis-bpad
+conda env remove --name "mp-former-paper-bpad"
+conda activate mp-former-paper-bpad
 ```
 
 ### Run experimental setup
