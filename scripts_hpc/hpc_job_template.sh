@@ -18,6 +18,6 @@ source /sw/rl8/zen/app/Miniconda3/24.1.2-0/etc/profile.d/conda.sh
 
 conda activate mp-former-paper-bpad
 
-cd $HOME/Thesis/BPAD/
+cd $HOME/MP-Former/BPAD/
 
 python main.py --experiment "TEMPLATE_HPC_EXPERIMENT" --repeats 1 --experiment_name "TEMPLATE_HPC_EXPERIMENT" --dataset_folder "TEMPLATE_HPC_EXPERIMENT"

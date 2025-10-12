@@ -21,7 +21,7 @@ source /sw/rl8/zen/app/Miniconda3/24.1.2-0/etc/profile.d/conda.sh
 
 conda activate mp-former-paper-bpad
 
-cd $HOME/Thesis/BPAD/
+cd $HOME/MP-Former/BPAD/
 
 python main.py --experiment "Experiment_Offline_MP_Former" --repeats 1 --experiment_name "Experiment_Offline_MP_Former" --dataset_folder "all_datasets_synthetics_part_1"
 # python main.py --experiment "Experiment_Offline_MP_Former" --repeats 1 --experiment_name "Experiment_Offline_MP_Former" --dataset_folder "all_datasets_synthetics_part_2"

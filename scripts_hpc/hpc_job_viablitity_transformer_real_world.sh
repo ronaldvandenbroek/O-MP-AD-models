@@ -21,6 +21,6 @@ source /sw/rl8/zen/app/Miniconda3/24.1.2-0/etc/profile.d/conda.sh
 
 conda activate mp-former-paper-bpad
 
-cd $HOME/Thesis/BPAD/
+cd $HOME/MP-Former/BPAD/
 
 python main.py --experiment "Experiment_Online_Viablity_Transformer" --repeats 1 --experiment_name "Experiment_Online_Viablity_Transformer" --dataset_folder "experiment_real_world_selected_models_part_1"

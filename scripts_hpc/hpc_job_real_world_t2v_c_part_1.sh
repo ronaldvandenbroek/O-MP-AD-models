@@ -18,6 +18,6 @@ source /sw/rl8/zen/app/Miniconda3/24.1.2-0/etc/profile.d/conda.sh
 
 conda activate mp-former-paper-bpad
 
-cd $HOME/Thesis/BPAD/
+cd $HOME/MP-Former/BPAD/
 
 python main.py --experiment "Experiment_Real_World_T2V_C" --repeats 1 --experiment_name "Experiment_Real_World_T2V_C_HPC_JOB" --dataset_folder "experiment_real_world_selected_models_part_1"

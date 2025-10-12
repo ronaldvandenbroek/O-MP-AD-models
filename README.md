@@ -4,7 +4,7 @@
 
 This repositiory is part of the *MP-Former: Enabling Transformer-Based Online Multi-Task Anomaly Detection* codebase consisting of two repositories:
 
-* [MP-Former Datagen](https://github.com/ronaldvandenbroek/O-MP-AD-datagen) is responsible for generating the datasets corresponding to the extended setting proposed in the thesis, implementing the *arrival-time* and *workload* anomalies.
+* [MP-Former Datagen](https://github.com/ronaldvandenbroek/O-MP-AD-datagen) is responsible for generating the datasets corresponding to the extended setting proposed in the paper, implementing the *arrival-time* and *workload* anomalies.
 
 * [MP-Former Models](https://github.com/ronaldvandenbroek/O-MP-AD-models) contains the implementation and evaluation of the proposed novel *BP-DAE* and *MP-Former* models.
 
@@ -17,7 +17,7 @@ The findings show the importance of specialized, multi-perspective process AD ap
 
 ## MP-Former Models
 
-This repository is an extention of the [BPAD](https://github.com/guanwei49/BPAD) framework, extended to execute the extended setting proposed within the thesis. It contains the novel *BP-DAE* and *MP-Former* anomaly detection models.
+This repository is an extention of the [BPAD](https://github.com/guanwei49/BPAD) framework, extended to execute the extended setting proposed within the paper. It contains the novel *BP-DAE* and *MP-Former* anomaly detection models.
 
 ### Folder overview
 
@@ -33,7 +33,7 @@ This repository is an extention of the [BPAD](https://github.com/guanwei49/BPAD)
   * Contains all generated datasets from the [MP-Former Datagen](https://github.com/ronaldvandenbroek/O-MP-AD-datagen) repository. To utilize these datasets they can be copied to the **eventlogs/** folder.
 
 * **experiments/**
-  * Contains all the experiment configurations used within the thesis.
+  * Contains all the experiment configurations used within the paper.
 
 * **novel/**
   * **novel/dae/** Contains the novel BP-DAE model based on the [OAE](https://github.com/zyrako4/sequence-online-ad) model.

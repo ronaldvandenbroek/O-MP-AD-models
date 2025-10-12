@@ -21,6 +21,6 @@ source /sw/rl8/zen/app/Miniconda3/24.1.2-0/etc/profile.d/conda.sh
 
 conda activate mp-former-paper-bpad
 
-cd $HOME/Thesis/BPAD/
+cd $HOME/MP-Former/BPAD/
 
 python main.py --experiment "Experiment_Transformer_Batch_Size" --repeats 1 --experiment_name "Experiment_Transformer_Batch_Size" --dataset_folder "finetune_synthetic"

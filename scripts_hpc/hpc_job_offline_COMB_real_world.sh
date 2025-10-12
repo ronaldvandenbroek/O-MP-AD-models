@@ -21,7 +21,7 @@ source /sw/rl8/zen/app/Miniconda3/24.1.2-0/etc/profile.d/conda.sh
 
 conda activate mp-former-paper-bpad
 
-cd $HOME/Thesis/BPAD/
+cd $HOME/MP-Former/BPAD/
 
 python main.py --experiment "Experiment_Offline_COMB" --repeats 1 --experiment_name "Experiment_Offline_COMB" --dataset_folder "experiment_real_world_selected_models_part_1"
 # python main.py --experiment "Experiment_Offline_COMB" --repeats 1 --experiment_name "Experiment_Offline_COMB" --dataset_folder "experiment_real_world_selected_models_part_2"
